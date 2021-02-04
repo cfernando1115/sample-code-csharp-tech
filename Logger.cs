@@ -26,9 +26,9 @@ namespace SampleCodeTech
         private string _defaultPath = "myDefaultPath";
 
         //PATH DEFAULTS WHEN NEW PATH IS NOT PASSED TO CONSTRUCTOR
-        public FileLogger(string path="")
+        public FileLogger(string path=null)
         {
-            _path = path==""? _defaultPath:path;
+            _path = path?? _defaultPath;
         }
 
         public void Log(string result)

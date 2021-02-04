@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SampleCodeTech
@@ -12,7 +11,6 @@ namespace SampleCodeTech
         {
             try
             {
-
                 //FILELOGGER AND CONSOLELOGGER CLASSES IMPLEMENT ILOGGER INTERFACE
 
                 var logMethod = new LoggerAssigner().AssignLogger();
@@ -39,11 +37,34 @@ namespace SampleCodeTech
                 calculator.AbsoluteDifference(x, y);
 
                 //CALCULATOR METHOD Divide() USES OUT MODIFIER
-                
+
+                calculator.Divide(x, y, out double quotient);
+                logMethod.Log("The quotient of your numbers: " + quotient);
+
+                //CALCULATOR METHOD Power() USES REF MODIFIER
+
+                logMethod.Log(x+" to the power of "+y+": ");
+                calculator.Power(ref x, y);
+                logMethod.Log(x.ToString());
+
+                //INITIALIZE STRINGGAMES CLASS
+
+                var stringGames = new StringGames(logMethod);
+                Console.WriteLine("Enter two strings separated by a comma: ");
+                stringGames.AssignStringSet(Console.ReadLine());
+
+                //STRINGGAMES METHODS ASSIGNED TO DELEGATE
+
+                stringGames.StringAction = stringGames.Join;
+                stringGames.StringAction += stringGames.Combine;
+                stringGames.PerformStringActions();
+
+
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("An error occurred.");
+                Console.WriteLine("An error occurred: {0}", ex.ToString());
             }
         }
     }

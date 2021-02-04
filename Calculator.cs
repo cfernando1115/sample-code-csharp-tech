@@ -17,6 +17,7 @@ namespace SampleCodeTech
             {
                 sum += n;
             }
+
             _logger.Log("Your numbers added: " + sum);
         }
 
@@ -27,13 +28,30 @@ namespace SampleCodeTech
             {
                 product *= n;
             }
+
             _logger.Log("Your numbers multiplied: " + product);
         }
 
         public void AbsoluteDifference(int x, int y)
         {
-            var absDiff=(x > y) ? x - y : y - x;
+            var absDiff = (x > y) ? x - y : y - x;
+
             _logger.Log("The absolute difference of your numbers: " + absDiff);
+        }
+
+        public void Divide(int x, int y, out double quotient)
+        {
+            quotient = (double)x / y;
+        }
+
+        public void Power(ref int x, int exponent)
+        {
+            var baseInt = x;
+            while (exponent>1)
+            {
+                x *= baseInt;
+                exponent--;
+            }
         }
     }
 }
