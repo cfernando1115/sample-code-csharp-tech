@@ -22,7 +22,8 @@ namespace SampleCodeTech
 
     public class FileLogger : ILogger
     {
-        private string _path;
+        //ONCE SET IN CONSTRUCTOR, _path CAN NOT BE REASSIGNED
+        private readonly string _path;
         private string _defaultPath = "myDefaultPath";
 
         //PATH DEFAULTS WHEN NEW PATH IS NOT PASSED TO CONSTRUCTOR

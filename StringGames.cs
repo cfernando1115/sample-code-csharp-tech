@@ -21,7 +21,6 @@ namespace SampleCodeTech
             var results = set.Split(',');
             _string1 = results[0];
             _string2 = results[1];
-
         }
 
         public void PerformStringActions()
@@ -47,22 +46,21 @@ namespace SampleCodeTech
             var resultString = new StringBuilder();
             var minLength = first.Length > second.Length?second.Length:first.Length;
             var totalLength = first.Length + second.Length;
+            var rem = totalLength - minLength * 2;
 
             for (var i = 0; i < minLength; i++)
             {
                 resultString.Append(first[i].ToString() + second[i].ToString());
             }
-            for(var i = 0; i < totalLength-minLength; i++)
+            if (first.Length <= minLength)
             {
-                if (first.Length <= i)
-                {
-                    resultString.Append(second[i]);
-                }
-                if (second.Length <= i)
-                {
-                    resultString.Append(first[i]);
-                }
+                resultString.Append(second, minLength, rem);
             }
+            if (second.Length <= minLength)
+            {
+                resultString.Append(first, minLength, rem);
+            }
+
             _logger.Log(resultString.ToString());
         }
     }

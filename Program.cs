@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace SampleCodeTech
 {
@@ -11,6 +12,7 @@ namespace SampleCodeTech
         {
             try
             {
+                
                 //FILELOGGER AND CONSOLELOGGER CLASSES IMPLEMENT ILOGGER INTERFACE
 
                 var logMethod = new LoggerAssigner().AssignLogger();
@@ -58,9 +60,22 @@ namespace SampleCodeTech
                 stringGames.StringAction = stringGames.Join;
                 stringGames.StringAction += stringGames.Combine;
                 stringGames.PerformStringActions();
+                
+                //CUSTOMER CLASS INHERITS FROM PERSON CLASS
 
+                var customer = new Customer(logMethod);
 
+                Console.WriteLine("Hey, there! What's your name?");
+                customer.Name = Console.ReadLine();
 
+                Console.WriteLine("Enter your birthdate in MM/DD/YYYY format:");
+                customer.Birthdate = DateTime.ParseExact(Console.ReadLine(), "M/d/yyyy", CultureInfo.InvariantCulture);
+                
+                //PERSON METHOD 
+                customer.CalculateAge();
+
+                //CUSTOMER METHOD BASED ON PROTECTED PERSON PROPERTY AGE
+                customer.CalculateRewardStatus();
             }
             catch (Exception ex)
             {
