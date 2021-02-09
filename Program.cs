@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Globalization;
@@ -10,9 +9,10 @@ namespace SampleCodeTech
     {
         static void Main(string[] args)
         {
+            //RANDOMADMONISHMENT USES RANDOM() TO ADMONISH YOU
+            var randomAdmonishment = new RandomAdmonishment();
             try
             {
-                
                 //FILELOGGER AND CONSOLELOGGER CLASSES IMPLEMENT ILOGGER INTERFACE
 
                 var logMethod = new LoggerAssigner().AssignLogger();
@@ -76,9 +76,17 @@ namespace SampleCodeTech
 
                 //CUSTOMER METHOD BASED ON PROTECTED PERSON PROPERTY AGE
                 customer.CalculateRewardStatus();
+
+                //EXTENSION METHOD RemoveReverse() REMOVES LETTER AT SPECIFIED INDEX AND REVERSES IT
+                Console.WriteLine("Enter a string and I'll mess it all up for you: ");
+                var stringEx = Console.ReadLine();
+                Console.WriteLine("Enter a whole number between 0 and {0}:", stringEx.Length-1);
+                var index = Convert.ToInt32(Console.ReadLine());
+                logMethod.Log(stringEx.RemoveReverse(index));
             }
             catch (Exception ex)
             {
+                Console.WriteLine(randomAdmonishment.GetAdmonishment());
                 Console.WriteLine("An error occurred: {0}", ex.ToString());
             }
         }
