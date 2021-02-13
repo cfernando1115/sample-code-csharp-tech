@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleCodeTech
 {
-    class Person
+    public class Person
     {
         public string Name { get; set; }
         public DateTime Birthdate { get; set; }

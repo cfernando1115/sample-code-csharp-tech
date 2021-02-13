@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleCodeTech
 {
-    class Customer:Person
+    public class Customer:Person
     {
         private string _rewardStatus;
         public Customer(ILogger logger)

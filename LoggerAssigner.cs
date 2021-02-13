@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleCodeTech
 {
-    class LoggerAssigner
+    public class LoggerAssigner
     {
         public ILogger AssignLogger()
         {

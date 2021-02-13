@@ -83,6 +83,17 @@ namespace SampleCodeTech
                 Console.WriteLine("Enter a whole number between 0 and {0}:", stringEx.Length-1);
                 var index = Convert.ToInt32(Console.ReadLine());
                 logMethod.Log(stringEx.RemoveReverse(index));
+
+                //DATABASE CLASS CREATES SQLITE DB WITH MOVIES TABLE AND ADDS INSTANCE OF MOVIE CLASS
+                var database = new Database(logMethod);
+                database.CreateDbAndTable();
+                database.AddMovie(new Movie {
+                    Name = "The Terminator",
+                    Genre = "Action",
+                    Release = new DateTime(1984, 10, 26)
+                });
+                database.GetMovies();
+
             }
             catch (Exception ex)
             {
