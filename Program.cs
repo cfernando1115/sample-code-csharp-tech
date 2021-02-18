@@ -5,11 +5,14 @@ using System.Globalization;
 
 namespace SampleCodeTech
 {
+
+
     class Program
     {
         static void Main(string[] args)
         {
             //RANDOMADMONISHMENT USES RANDOM() TO ADMONISH YOU
+
             var randomAdmonishment = new RandomAdmonishment();
             try
             {
@@ -72,12 +75,15 @@ namespace SampleCodeTech
                 customer.Birthdate = DateTime.ParseExact(Console.ReadLine(), "M/d/yyyy", CultureInfo.InvariantCulture);
                 
                 //PERSON METHOD 
+
                 customer.CalculateAge();
 
                 //CUSTOMER METHOD BASED ON PROTECTED PERSON PROPERTY AGE
+
                 customer.CalculateRewardStatus();
 
                 //EXTENSION METHOD RemoveReverse() REMOVES LETTER AT SPECIFIED INDEX AND REVERSES IT
+
                 Console.WriteLine("Enter a string and I'll mess it all up for you: ");
                 var stringEx = Console.ReadLine();
                 Console.WriteLine("Enter a whole number between 0 and {0}:", stringEx.Length-1);
@@ -85,6 +91,7 @@ namespace SampleCodeTech
                 logMethod.Log(stringEx.RemoveReverse(index));
 
                 //DATABASE CLASS CREATES SQLITE DB WITH MOVIES TABLE AND ADDS INSTANCE OF MOVIE CLASS
+
                 var database = new Database(logMethod);
                 database.CreateDbAndTable();
                 database.AddMovie(new Movie {
@@ -93,6 +100,14 @@ namespace SampleCodeTech
                     Release = new DateTime(1984, 10, 26)
                 });
                 database.GetMovies();
+
+                //TEMPERATURE CLASS IMPLEMENTS ABSTRACT CLASS TEMPERATURESET
+
+                var temp = new Temperature(logMethod);
+                temp.SetCelsius(32.0f);
+                temp.SetFahrenheit(77.3f);
+                temp.ConvertBoth();
+
 
             }
             catch (Exception ex)

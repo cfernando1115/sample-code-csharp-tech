@@ -74,6 +74,7 @@
     <Compile Include="RandomAdmonishment.cs" />
     <Compile Include="StringExtensions.cs" />
     <Compile Include="StringGames.cs" />
+    <Compile Include="TemperatureSet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
